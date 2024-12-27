@@ -54,4 +54,4 @@ This project is an automatic tire inflator designed to simplify and automate the
 
 ## Documentation
 - [Usage](docs/usage.md)
-- [Functions](docs/)
+- [Functions](docs/Functions/)
