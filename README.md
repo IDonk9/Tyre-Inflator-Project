@@ -51,6 +51,10 @@ This project is an automatic tire inflator designed to simplify and automate the
 - **USART communication** for debugging and as an alternative to button presses:
   - Transmit (`Tx1`): `RC6`.
   - Receive (`Rx1`): `RC7`.
+  - `d`: increase pressure
+  - `a`: decrease pressure
+  - `s`: select pressure
+  - `w`: emergency stop
 
 ## Documentation
 - [Usage](docs/usage.md)
