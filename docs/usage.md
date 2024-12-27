@@ -19,7 +19,7 @@
 
 ### 4. **Finished Mode**
 - When the inflation process is completed, or if the emergency stop is triggered, the application will automatically switch to **"Finished mode"**.
-- In **Finished mode**, an animation will be displayed to indicate the completion of the process.
+- In **Finished mode**, a special animation will be displayed upon successful completion.
 
 ### 5. **Returning to Selection Mode**
 - When in **Finished mode**, the user may press **RC2** or **'s'** to return to **Selection mode** and begin a new inflation process.
