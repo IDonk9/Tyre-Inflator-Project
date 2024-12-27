@@ -5,8 +5,8 @@ A tyre inflator project for the PIC18F45K22
 ### User Interaction
 - **GLCD display** to present status, sensor readings, and animations.
 - **Buttons for user input**:
-  - **Increase Pressure**: Increment the desired tire pressure (`RC0`).
-  - **Decrease Pressure**: Decrement the desired tire pressure (`RC1`).
+  - **Increase Pressure**: Increment the desired tyre pressure (`RC0`).
+  - **Decrease Pressure**: Decrement the desired tyre pressure (`RC1`).
   - **Confirm Selection**: Confirm the desired pressure (`RC2`).
   - **Emergency Stop**: Stop the inflator immediately (`RC3`).
 
@@ -19,8 +19,8 @@ A tyre inflator project for the PIC18F45K22
 
 ### Sensors and Monitoring
 - **Temperature Sensor (NTC)**: Monitors ambient temperature (`AN6`).
-- **Pressure Sensor**: Simulated with a potentiometer to measure tire pressure (1kΩ between 0V and 5V).
-- **Detection of tire punctures**:
+- **Pressure Sensor**: Simulated with a potentiometer to measure tyre pressure (1kΩ between 0V and 5V).
+- **Detection of tyre punctures**:
   - Alerts if pressure decreases unexpectedly during inflation.
 
 ### Compressor Control
