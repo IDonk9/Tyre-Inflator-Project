@@ -201,3 +201,52 @@ void printButton(Button* button);
 
 **Return value:**
 - This function does not return a value.
+
+## **Function: updateButtonState**
+
+**Precondition:**
+- GLCD must be initialized and button must be valid
+
+**Postcondition:**
+- The button's state is updated, and the visual state of the button on the GLCD is toggled or untoggled based on the edge detection logic.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+byte updateButtonState(Button* button);
+```
+
+**Description:**
+- Checks the state of the button (from port and mask) and compares it to the previous state (previousState).If the button is configured for rising or falling edge detection, it identifies a state change:
+    - On a rising edge (when state changes from 0 to 1), it toggles the button if the state remains stable (based on bouncingCount).
+    - On a falling edge (when state changes from 1 to 0), it similarly toggles or untoggles based on the bouncing count.
+- The visual button state is updated on the GLCD using printButtonToggle or printButtonUntoggle.
+- Updates the previousState for future comparisons.
+
+**Return value:**
+- Returns 1 if a valid edge was detected, 0 otherwise.
+
+## **Function: printValue**
+
+**Precondition:**
+- GLCD must be initialized and value must be valid.
+
+**Postcondition:**
+- The value is printed on the GLCD, formatted with a prefix, numeric value, and unit.
+
+**Synopsis:**
+```c
+void printValue(Value* value);
+```
+
+**Description:**
+Displays the value on the GLCD at the specified page and centerColumn, including:
+A prefix (prefix), followed by the numeric value.
+If the value is greater than 9, it is displayed with two digits.
+A space is added after the numeric value, followed by the unit (unit).
+The value is centrally aligned based on the calculated total length.
+Updates previousValue for comparison in subsequent prints.
+Return value:
+
+This function does not return a value.
