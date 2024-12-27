@@ -74,10 +74,10 @@ void showIntro(void)
 
 // Change it to modulate the period in which
 // the flanks are ignored because of bouncing.
-// Every unit here is 100 ms, this might cause
+// Every unit here is 100 ms, this might couse
 // the animation to look slower, if you decrease
 // it, the animation will be faster, but at the
-// expense of detecting some "false" flanks.
+// expense of detecting some "false" flank.
 #define TARGET_COUNT 2
 
 // Initializing the structs for the buttons.
@@ -87,7 +87,7 @@ void showIntro(void)
 Button buttons[4] = {
    // 	startingPage, 	startingColumn, name, 		function, 	typeOfEdge, 	bouncingCount, 	previousState, 	port, 		mask
    { 	2, 		2, 		"RC0", 		'+', 		RisingEdge, 	0, 		0, 		&PORTC, 	0x01 },
-   { 	2, 		7, 		"RC1", 		'-', 		RisingEdge,	0,	 	0, 		&PORTC, 	0x02 },
+   { 	2, 		7, 		"RC1", 		'-', 		RisingEdge,	   0,	 	   0, 		&PORTC, 	0x02 },
    { 	2, 		12, 		"RC2", 		'>', 		RisingEdge, 	0, 		0, 		&PORTC, 	0x04 },
    { 	2, 		17, 		"RC3", 		'!', 		RisingEdge, 	0, 		0, 		&PORTC, 	0x08 }
 };
@@ -97,8 +97,6 @@ Bar bar = { 	110, 		0 	   };
 
 unsigned short ticsSinceStart = 0;
 unsigned short ticsToFinish = 0;
-// "lines" is a percentage count for the bar.
-byte lines = 0;
 byte measure = 0;
 byte animate = 0;
 char currentCommand = '\0';
@@ -120,13 +118,12 @@ void interrupt high_priority RSI(void)
       }
       if (ticsSinceStart < ticsToFinish) ++ticsSinceStart;
       if (ticsToFinish > 0) {
-	 byte newLines = (100*ticsSinceStart)/ticsToFinish;
+	 byte newPercentage = (100*ticsSinceStart)/ticsToFinish;
 	 // Usually, it will only be one line,
 	 // but, if time is very short, then
 	 // we may need to print several at once.
-	 while (lines < newLines) {
+	 while (bar.percentage < newPercentage) {
 	    printBarIncrement(&bar);
-	    ++lines;
 	 }
       }
    }
@@ -331,7 +328,6 @@ void main(void)
       for (byte i = 0; i < 4; ++i) {
 	 edges[i] = updateButtonState(&buttons[i]);
       }
-      (void)0xdeadbeef;
       switch (state) {
 	 case Select: {
 	    if (edges[0] || currentCommand == 'd') {
@@ -348,7 +344,6 @@ void main(void)
 	    }
 	    if (edges[2] || currentCommand == 's') {
 	       // Compute ticsToFinish.
-	       lines = 0;
 	       ticsSinceStart = 0;
 	       ticsToFinish = 10*(((selectedPSI.value - pressure.value) >> 1) - (temperature.value - 25));
 	       // If negative or zero, fill the bar and finish.
@@ -382,7 +377,6 @@ void main(void)
 		  changeState(state = Finished);
 	       }
 	       disablePWM();
-	       lines = 0;
 	       ticsSinceStart = 0;
 	       ticsToFinish = 0;
 	    }
