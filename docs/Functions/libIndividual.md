@@ -241,12 +241,12 @@ void printValue(Value* value);
 ```
 
 **Description:**
-Displays the value on the GLCD at the specified page and centerColumn, including:
-A prefix (prefix), followed by the numeric value.
-If the value is greater than 9, it is displayed with two digits.
-A space is added after the numeric value, followed by the unit (unit).
-The value is centrally aligned based on the calculated total length.
-Updates previousValue for comparison in subsequent prints.
-Return value:
+- Displays the value on the GLCD at the specified page and centerColumn, including:
+    - A prefix (prefix), followed by the numeric value.
+    - If the value is greater than 9, it is displayed with two digits.
+    - A space is added after the numeric value, followed by the unit (unit).
+    - The value is centrally aligned based on the calculated total length.
+- Updates previousValue for comparison in subsequent prints.
 
-This function does not return a value.
+**Return value:**
+- This function does not return a value.
