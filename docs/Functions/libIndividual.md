@@ -250,3 +250,119 @@ void printValue(Value* value);
 
 **Return value:**
 - This function does not return a value.
+
+## **Function: updateValue**
+
+**Precondition:**
+- GLCD must be initialized and value must be valid.
+
+**Postcondition:**
+- Displayed value on the GLCD has been updated if it has changed, either by modifying only the changed characters or clearing the old value and printing the new one.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+void updateValue(Value* value);
+```
+
+**Description:**
+- Compares the current value with the previousValue to detect changes.
+    - If the value remains the same, no update occurs.
+    - If the value changes and the new value has the same number of digits (1 or 2), it only updates the relevant digits (either the first or second digit).
+    - If the new value has a different number of digits (e.g., a change from 1-digit to 2-digit), the old value is cleared, and the new value is printed in full.
+- Updates the previousValue to keep track of the current state.
+
+**Return value:**
+- This function does not return a value.
+
+## **Function: printBar**
+
+**Precondition:**
+- GLCD must be initialized and bar must be valid.
+
+**Postcondition:**
+- Prints a progress bar on the GLCD at the specified location.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+void printBar(Bar* bar);
+```
+**Description:**
+- The function prints a progress bar with padding and structure:
+    - Vertical lines are drawn at the specified starting column (startingColumn) to form the sides of the bar.
+    - Horizontal lines are drawn at the top and bottom for the bar's frame.
+    - Long lines are drawn along the sides of the bar for decoration.
+    - Short lines are drawn on the top-right and bottom-right corners of the bar.
+
+**Return value:**
+- This function does not return a value.
+
+## **Function: printBarIncrement**
+
+**Precondition:**
+- GLCD must be initialized and bar must be valid and be in a valid position
+
+**Postcondition:**
+- The progress bar's percentage will be updated and a horizontal line will be printed on the GLCD if the percentage is odd.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+void printBarIncrement(Bar* bar);
+```
+
+**Description:**
+- The function increments the percentage of the progress bar.
+- If the new percentage is odd, it prints a horizontal line on the GLCD to visually represent progress.
+
+**Return value:**
+- This function does not return a value.
+
+## **Function: printBarDecrement**
+
+**Precondition:**
+- GLCD must be initialized and bar must be valid and be in a valid position
+
+**Postcondition:**
+- The progress bar's percentage will be decremented and a horizontal line will be erased on the GLCD if the percentage is even.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+void printBarDecrement(Bar* bar);
+```
+
+**Description:**
+- The function decrements the percentage of the progress bar.
+- If the new percentage is even, it erases a horizontal line on the GLCD to visually represent a decrease in progress.
+
+**Return value:**
+- This function does not return a value.
+
+## **Function: eraseBarProgress**
+
+**Precondition:**
+- GLCD must be initialized and bar must be valid
+
+**Postcondition:**
+- The progress bar will be cleared on the GLCD by erasing the vertical lines representing the progress.
+- The `percentage` field in the `Bar` structure will be reset to 0.
+
+**Synopsis:**
+```c
+#include "libIndividual.h"
+
+void eraseBarProgress(Bar* bar);
+```
+
+**Description:**
+- The function erases the progress bar by clearing the vertical lines.
+- After clearing the bar, the percentage of the progress bar is reset to 0.
+
+**Return value:**
+- This function does not return a value.
