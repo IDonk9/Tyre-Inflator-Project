@@ -51,3 +51,7 @@ This project is an automatic tire inflator designed to simplify and automate the
 - **USART communication** for debugging and future extensions:
   - Transmit (`Tx1`): `RC6`.
   - Receive (`Rx1`): `RC7`.
+
+## Documentation
+- [Usage](docs/usage.md)
+- [Functions](docs/)
