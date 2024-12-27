@@ -1,7 +1,10 @@
 # Tyre-Inflator-Project
 A tyre inflator project for the PIC18F45K22
-## Features
 
+## About the Project
+This project is an automatic tire inflator designed to simplify and automate the inflation process. It features a GLCD display for real-time feedback, buttons for user interaction, and sensors to monitor temperature and pressure. The system uses a state machine for efficient operation, PWM for compressor control, and serial communication for debugging and potential extensions. It has been developed on the PIC18F45K22 microcontroller with the EASYPIC7 board.
+
+## Features
 ### User Interaction
 - **GLCD display** to present status, sensor readings, and animations.
 - **Buttons for user input**:
