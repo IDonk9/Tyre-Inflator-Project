@@ -48,7 +48,7 @@ This project is an automatic tire inflator designed to simplify and automate the
   - Alerts for puncture detection.
 
 ### Serial Communication
-- **USART communication** for debugging and future extensions:
+- **USART communication** for debugging and as an alternative to button presses:
   - Transmit (`Tx1`): `RC6`.
   - Receive (`Rx1`): `RC7`.
 
