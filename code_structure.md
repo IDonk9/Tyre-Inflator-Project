@@ -33,7 +33,8 @@
   - `receptionErrorRecovery()` – Gestiona errors.  
 - **Notes:**  
   - Durant les proves, vaig trobar l'**error de sobrecàrrega**, però **no l'error de sincronització de trama**.  
-  - El mètode de recuperació resol els errors descartant **totes les dades de la FIFO** i **esborrant els indicadors d'error**, assegurant així que la comunicació reprengui sense dades invàlides.  
+  - El mètode de recuperació resol els errors descartant **totes les dades de la FIFO** i **esborrant els indicadors d'error**, assegurant així que la comunicació reprengui sense dades invàlides.
+  - Durant les proves amb la transmissió USART, vaig trobar un problema amb el format de final de línia. Estava utilitzant el caràcter *'\n'* per indicar el final de línia, però el terminal virtual esperava el format de Windows, que utilitza *'\r\n'*. Això causava que els salts de línia no es mostressin correctament. Per solucionar-ho, vaig modificar el codi per enviar *'\r\n'* en lloc de només *'\n'*, assegurant així la compatibilitat amb el terminal virtual utilitzat.  
 
 ### **Timers (`timers.c`)**  
 - **Propòsit:** Gestiona les operacions de temporització i PWM.  
@@ -108,7 +109,8 @@
   - `receptionErrorRecovery()` – Handles errors.  
 - **Notes:**  
   - I encountered the **overrun error**, but **not the framing error** during testing.  
-  - The recovery method resolves errors by **discarding all data in the FIFO** and **clearing error flags** to ensure proper communication resumes without invalid data.  
+  - The recovery method resolves errors by **discarding all data in the FIFO** and **clearing error flags** to ensure proper communication resumes without invalid data.
+  - While testing USART transmission, I encountered an issue with the end-of-line format. I was using the *'\n'* character to indicate the end of a line, but the virtual terminal expected the Windows format, which uses *'\r\n'*. This caused the line breaks to display incorrectly. To resolve this, I updated the code to transmit *'\r\n'* instead of just *'\n'*, ensuring compatibility with the virtual terminal in use.
 
 ### **Timers (`timers.c`)**  
 - **Purpose:** Manages timing and PWM operations.  
